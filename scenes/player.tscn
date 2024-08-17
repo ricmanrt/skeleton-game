@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3057xsnq11lq"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_07jwv"]
+[ext_resource type="Texture2D" uid="uid://dnisut2j0lohn" path="res://sprites/dungeon tilemap.png" id="2_gr3lw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd3x0"]
+atlas = ExtResource("2_gr3lw")
+region = Rect2(0, 119, 16, 16)
+margin = Rect2(0, 0, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp3yv"]
+atlas = ExtResource("2_gr3lw")
+region = Rect2(153, 170, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hmex"]
+radius = 7.07107
+
+[node name="Player" type="RigidBody2D"]
+collision_layer = 3
+lock_rotation = true
+script = ExtResource("1_07jwv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.5, -7.5)
+texture = SubResource("AtlasTexture_sd3x0")
+
+[node name="Hand Rotation" type="Node2D" parent="Sprite2D"]
+
+[node name="Hand" type="Marker2D" parent="Sprite2D/Hand Rotation"]
+position = Vector2(11, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Hand Rotation/Hand"]
+texture = SubResource("AtlasTexture_dp3yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -7.5)
+shape = SubResource("CircleShape2D_8hmex")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="SpellCooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpellCooldown" to="." method="_on_spell_cooldown_timeout"]

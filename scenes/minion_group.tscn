@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://baq3usgniqgk5"]
+
+[ext_resource type="Script" path="res://scripts/minion_unit.gd" id="1_rp1po"]
+
+[node name="MinionGroup" type="Node2D"]
+script = ExtResource("1_rp1po")
+
+[node name="AveragePosition" type="Marker2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="AveragePosition"]
+monitorable = false
+
+[node name="Units" type="Node2D" parent="."]
+
+[node name="Target" type="Marker2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 5
+bus = &"SFX"

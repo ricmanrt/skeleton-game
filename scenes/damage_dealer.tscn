@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://sy466c6ibdsm"]
+
+[ext_resource type="Script" path="res://scripts/damage_dealer.gd" id="1_tcoo3"]
+
+[node name="DamageDealer" type="Area2D"]
+collision_layer = 16
+collision_mask = 17
+script = ExtResource("1_tcoo3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

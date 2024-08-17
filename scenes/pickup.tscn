@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp257dpd8ylda"]
+
+[ext_resource type="Script" path="res://scripts/pickup.gd" id="1_hfrsm"]
+[ext_resource type="Texture2D" uid="uid://bl5dew57ync05" path="res://sprites/bone.png" id="1_kvfhg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mh3c0"]
+
+[node name="Pickup" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_hfrsm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mh3c0")
+debug_color = Color(0.284969, 0.630125, 0.0561881, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kvfhg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
