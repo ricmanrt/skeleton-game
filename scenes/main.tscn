@@ -67,7 +67,6 @@ texture = SubResource("AtlasTexture_jk2ri")
 [node name="Groups" type="Node2D" parent="."]
 
 [node name="MinionGroup" parent="Groups" instance=ExtResource("7_gse1f")]
-position = Vector2(305, 29)
 unit_prefab = ExtResource("8_07rje")
 
 [node name="Minion" parent="Groups/MinionGroup/Units" index="0" instance=ExtResource("8_07rje")]
@@ -75,6 +74,9 @@ position = Vector2(0, 57)
 
 [node name="Minion2" parent="Groups/MinionGroup/Units" index="1" instance=ExtResource("8_07rje")]
 position = Vector2(-214, 58)
+
+[node name="Target" parent="Groups/MinionGroup" index="2"]
+position = Vector2(77, 86)
 
 [node name="Skeletons" type="Node2D" parent="."]
 unique_name_in_owner = true

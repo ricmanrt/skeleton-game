@@ -6,12 +6,6 @@ To do:
 	* game over 
 	* turn skeleton into generic unit minion that can be either skele or enemy
 	* fix explosion damage
-	* enemy 
-		* unit part of a group
-	* enemy groups
-		* object defined by average position of units like skeletons rn,
-		* all go to a common target, 
-		* big area2D in average center can be a group proximity detector
 	* general juice
 	* damage numbers
 	* maybe make a damage flash script instead of animation, probably nah
@@ -36,3 +30,9 @@ Done:
 - pew, boom! (no effects tho)
 - rework damage
 - damage flash
+* enemy 
+	* unit part of a group
+* enemy groups
+	* object defined by average position of units like skeletons rn,
+	* all go to a common target, 
+	* big area2D in average center can be a group proximity detector
