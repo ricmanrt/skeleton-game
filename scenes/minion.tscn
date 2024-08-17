@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsrx8agfk76hv"]
+[gd_scene load_steps=16 format=3 uid="uid://dsrx8agfk76hv"]
 
 [ext_resource type="Script" path="res://scripts/minion.gd" id="1_5ei4y"]
 [ext_resource type="Texture2D" uid="uid://dnisut2j0lohn" path="res://sprites/dungeon tilemap.png" id="2_7gy1t"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sy466c6ibdsm" path="res://scenes/damage_dealer.tscn" id="4_gs8nu"]
 [ext_resource type="AudioStream" uid="uid://drnpheb4nmo2y" path="res://sounds/fall3.ogg" id="5_2udxr"]
 [ext_resource type="AudioStream" uid="uid://2px0dhlhfjny" path="res://sounds/hit3.ogg" id="6_6we6o"]
+[ext_resource type="Script" path="res://scripts/drop_item.gd" id="7_bdkrw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdtbv"]
 atlas = ExtResource("2_7gy1t")
@@ -171,4 +172,8 @@ volume_db = -13.117
 max_polyphony = 3
 bus = &"SFX"
 
+[node name="DropItem" type="Node" parent="."]
+script = ExtResource("7_bdkrw")
+
+[connection signal="died" from="." to="DropItem" method="drop_item"]
 [connection signal="damage_taken" from="DamageTaker" to="." method="_on_damage_taken"]

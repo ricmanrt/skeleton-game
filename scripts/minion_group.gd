@@ -2,7 +2,7 @@ class_name MinionGroup
 extends Node2D
 
 signal unit_count_changed
-signal unit_died
+signal unit_died(unit : Minion)
 signal unit_summoned
 
 @export var unit_prefab : PackedScene
@@ -32,7 +32,12 @@ func set_unit_count(v:int) ->void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	unit_count = units.get_child_count()
+	for u in units.get_children():
+		assert (u is Minion )
+		connect_unit(u as Minion)
 
+func connect_unit(unit: Minion):
+	unit.died.connect(_on_unit_death.bind(unit))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,8 +47,9 @@ func _physics_process(delta: float) -> void:
 	move_units(delta)
 
 
-func _on_unit_death() -> void:
-	unit_died.emit()
+func _on_unit_death(unit) -> void:
+	unit_died.emit(unit)
+	#GlobalEvents.item_drop.emit(unit.position)
 	
 	audio_stream_player.pitch_scale = randf_range(0.7, 0.9)
 	audio_stream_player.stream = death_sound
@@ -59,7 +65,9 @@ func summon_unit(pos: Vector2)-> void:
 	s.position = pos
 	
 	units.add_child.call_deferred(s)
+	connect_unit.call_deferred(s)
 	unit_summoned.emit.call_deferred()
+	
 	
 	audio_stream_player.pitch_scale = randf_range(0.7, 0.9)
 	audio_stream_player.stream = summon_sound

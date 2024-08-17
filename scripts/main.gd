@@ -12,12 +12,12 @@ extends Node2D
 var camera_zoom := 1.0
 
 const SKELETON = preload("res://scenes/skeleton.tscn")
-
+const PICKUP = preload("res://scenes/pickup.tscn")
 
 @onready var player: RigidBody2D = %Player
 @onready var cursor: Sprite2D = $Cursor
 @onready var camera: Camera2D = $Player/Camera2D
-
+@onready var map_objects: Node2D = $"Map objects"
 @onready var skeleton_group: MinionGroup = $Groups/SkeletonGroup
 
 
@@ -26,6 +26,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	
 	GlobalEvents.skeleton_pickup.connect(_on_pickup)
+	GlobalEvents.item_dropped.connect(_on_item_drop)
 
 func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("ui_cancel") ):
@@ -42,6 +43,10 @@ func _process(delta: float) -> void:
 	
 	$UILayer/Control/SkeletonCount.text = "skeleton count: " + str(skeleton_group.unit_count)
 
+func _on_item_drop(pos: Vector2) ->void: 
+	var d := PICKUP.instantiate()
+	d.position = pos
+	map_objects.add_child(d)
 
 func _on_pickup(pos : Vector2) -> void:
 	summon_skeleton(pos)
