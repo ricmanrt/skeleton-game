@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3057xsnq11lq"]
+[gd_scene load_steps=9 format=3 uid="uid://c3057xsnq11lq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_07jwv"]
 [ext_resource type="Texture2D" uid="uid://dnisut2j0lohn" path="res://sprites/dungeon tilemap.png" id="2_gr3lw"]
+[ext_resource type="PackedScene" uid="uid://bffj27bdkwpnw" path="res://scenes/damage_taker.tscn" id="3_63fsy"]
+[ext_resource type="PackedScene" uid="uid://c2amf5pks6fkh" path="res://scenes/health_bar.tscn" id="4_li2g4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sd3x0"]
 atlas = ExtResource("2_gr3lw")
@@ -14,6 +16,9 @@ region = Rect2(153, 170, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8hmex"]
 radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_57lv6"]
+radius = 8.06226
 
 [node name="Player" type="RigidBody2D"]
 collision_layer = 3
@@ -33,6 +38,7 @@ position = Vector2(11, 0)
 texture = SubResource("AtlasTexture_dp3yv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.5, -7.5)
 shape = SubResource("CircleShape2D_8hmex")
 
@@ -40,5 +46,15 @@ shape = SubResource("CircleShape2D_8hmex")
 
 [node name="SpellCooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="DamageTaker" parent="." instance=ExtResource("3_63fsy")]
+position = Vector2(1, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageTaker"]
+shape = SubResource("CircleShape2D_57lv6")
+debug_color = Color(0, 0.651266, 0.0154943, 0.42)
+
+[node name="HealthBar" parent="." instance=ExtResource("4_li2g4")]
+position = Vector2(-13, 2)
 
 [connection signal="timeout" from="SpellCooldown" to="." method="_on_spell_cooldown_timeout"]

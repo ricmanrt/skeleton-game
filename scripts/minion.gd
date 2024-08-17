@@ -1,7 +1,6 @@
 class_name Minion
 extends RigidBody2D
 
-
 signal died
 signal hp_changed(hp : int)
 

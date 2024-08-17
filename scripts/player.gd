@@ -1,6 +1,16 @@
 class_name Player
 extends RigidBody2D
 
+signal died
+signal hp_changed(hp : int)
+
+@export var max_hp: int = 10
+@onready var hp :int = max_hp:
+	set(v):
+		hp = v
+		hp_changed.emit(v)
+
+
 @export var speed :float = 2000
 @export var spell_cooldown = 0.5
 
@@ -14,6 +24,7 @@ const PROJECTILE = preload("res://scenes/projectile.tscn")
 @onready var hand_rotation: Node2D = $"Sprite2D/Hand Rotation"
 @onready var hand: Marker2D = $"Sprite2D/Hand Rotation/Hand"
 @onready var spell_cooldown_timer: Timer = $SpellCooldown
+
 
 
 
