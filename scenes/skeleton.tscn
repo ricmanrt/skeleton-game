@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cou7l8r40feqs"]
+[gd_scene load_steps=14 format=3 uid="uid://dnqltv3byniu"]
 
 [ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_dh7rd"]
 [ext_resource type="Texture2D" uid="uid://1nk1s4h7p4dg" path="res://sprites/skeleman.png" id="1_fb5xc"]
