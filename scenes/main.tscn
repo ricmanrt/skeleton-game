@@ -1,29 +1,18 @@
-[gd_scene load_steps=19 format=4 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=17 format=4 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
 [ext_resource type="Texture2D" uid="uid://dnisut2j0lohn" path="res://sprites/dungeon tilemap.png" id="2_edgkl"]
 [ext_resource type="TileSet" uid="uid://ch83v01htb5sm" path="res://resources/main_tileset.tres" id="2_plsb4"]
 [ext_resource type="Script" path="res://scripts/cursor.gd" id="3_2wbdm"]
-[ext_resource type="Script" path="res://scripts/arrow.gd" id="3_5ymx3"]
+[ext_resource type="PackedScene" uid="uid://cccurwotrwytu" path="res://scenes/arrow.tscn" id="3_slm0g"]
 [ext_resource type="PackedScene" uid="uid://cou7l8r40feqs" path="res://scenes/skeleton.tscn" id="4_75sc2"]
-[ext_resource type="Texture2D" uid="uid://cy8d8lc4bcs8y" path="res://sprites/1kriom.png" id="4_dpfoh"]
+[ext_resource type="PackedScene" uid="uid://baq3usgniqgk5" path="res://scenes/minion_group.tscn" id="7_gse1f"]
+[ext_resource type="PackedScene" uid="uid://dsrx8agfk76hv" path="res://scenes/minion.tscn" id="8_07rje"]
 [ext_resource type="PackedScene" uid="uid://cp257dpd8ylda" path="res://scenes/pickup.tscn" id="9_lu2nb"]
 [ext_resource type="AudioStream" uid="uid://bcuiuonby0src" path="res://music/Retro Beat.ogg" id="10_lvsas"]
 [ext_resource type="FontFile" uid="uid://ckswc4iseblhr" path="res://fonts/Kenney Mini Square Mono.ttf" id="10_tjokw"]
 [ext_resource type="AudioStream" uid="uid://c0wxc6agi5dv6" path="res://sounds/skeleton_rise.ogg" id="12_eetql"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ut0ai"]
-atlas = ExtResource("4_dpfoh")
-region = Rect2(0, 0, 9, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vapsu"]
-atlas = ExtResource("4_dpfoh")
-region = Rect2(10, 0, 1, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l8dlh"]
-atlas = ExtResource("4_dpfoh")
-region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydft4"]
 size = Vector2(14, 14)
@@ -52,24 +41,7 @@ tile_set = ExtResource("2_plsb4")
 
 [node name="SkeletonAverage" type="Marker2D" parent="."]
 
-[node name="Arrow" type="Node2D" parent="SkeletonAverage"]
-modulate = Color(1, 1, 1, 0.411765)
-script = ExtResource("3_5ymx3")
-
-[node name="ArrowBack" type="Sprite2D" parent="SkeletonAverage/Arrow"]
-position = Vector2(-1, -8)
-texture = SubResource("AtlasTexture_ut0ai")
-centered = false
-
-[node name="ArrowMid" type="Sprite2D" parent="SkeletonAverage/Arrow"]
-position = Vector2(8, -8)
-texture = SubResource("AtlasTexture_vapsu")
-centered = false
-
-[node name="ArrowFront" type="Sprite2D" parent="SkeletonAverage/Arrow"]
-position = Vector2(9, -8)
-texture = SubResource("AtlasTexture_l8dlh")
-centered = false
+[node name="Arrow" parent="SkeletonAverage" instance=ExtResource("3_slm0g")]
 
 [node name="Map objects" type="Node2D" parent="."]
 
@@ -91,6 +63,18 @@ shape = SubResource("RectangleShape2D_ydft4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Map objects/Box"]
 texture = SubResource("AtlasTexture_jk2ri")
+
+[node name="Groups" type="Node2D" parent="."]
+
+[node name="MinionGroup" parent="Groups" instance=ExtResource("7_gse1f")]
+position = Vector2(305, 29)
+unit_prefab = ExtResource("8_07rje")
+
+[node name="Minion" parent="Groups/MinionGroup/Units" index="0" instance=ExtResource("8_07rje")]
+position = Vector2(0, 57)
+
+[node name="Minion2" parent="Groups/MinionGroup/Units" index="1" instance=ExtResource("8_07rje")]
+position = Vector2(-214, 58)
 
 [node name="Skeletons" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -160,3 +144,5 @@ volume_db = -9.37
 pitch_scale = 0.69
 max_polyphony = 3
 bus = &"SFX"
+
+[editable path="Groups/MinionGroup"]

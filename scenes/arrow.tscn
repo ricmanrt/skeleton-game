@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cccurwotrwytu"]
+
+[ext_resource type="Script" path="res://scripts/arrow.gd" id="1_ffp0g"]
+[ext_resource type="Texture2D" uid="uid://cy8d8lc4bcs8y" path="res://sprites/1kriom.png" id="2_57udy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut0ai"]
+atlas = ExtResource("2_57udy")
+region = Rect2(0, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vapsu"]
+atlas = ExtResource("2_57udy")
+region = Rect2(10, 0, 1, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8dlh"]
+atlas = ExtResource("2_57udy")
+region = Rect2(16, 0, 16, 16)
+
+[node name="Arrow" type="Node2D"]
+modulate = Color(1, 1, 1, 0.411765)
+script = ExtResource("1_ffp0g")
+
+[node name="ArrowBack" type="Sprite2D" parent="."]
+position = Vector2(-1, -8)
+texture = SubResource("AtlasTexture_ut0ai")
+centered = false
+
+[node name="ArrowMid" type="Sprite2D" parent="."]
+position = Vector2(8, -8)
+texture = SubResource("AtlasTexture_vapsu")
+centered = false
+
+[node name="ArrowFront" type="Sprite2D" parent="."]
+position = Vector2(9, -8)
+texture = SubResource("AtlasTexture_l8dlh")
+centered = false

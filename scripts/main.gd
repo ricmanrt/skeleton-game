@@ -69,6 +69,8 @@ func move_skeletons(delta: float) -> void:
 		skeleton.apply_central_force(direction * skeleton_speed * delta * 20 )
 		avg_pos+= skeleton.position
 	avg_pos = avg_pos / skeleton_count
+	
 	skeleton_average.position = avg_pos
 	skeleton_average.look_at(cursor.position)
+	
 	arrow.length = (avg_pos - cursor.position).length() - 32

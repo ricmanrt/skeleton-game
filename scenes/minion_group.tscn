@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://baq3usgniqgk5"]
+[gd_scene load_steps=4 format=3 uid="uid://baq3usgniqgk5"]
 
-[ext_resource type="Script" path="res://scripts/minion_unit.gd" id="1_rp1po"]
+[ext_resource type="Script" path="res://scripts/minion_group.gd" id="1_rp1po"]
+[ext_resource type="PackedScene" uid="uid://cccurwotrwytu" path="res://scenes/arrow.tscn" id="2_aeg7t"]
+[ext_resource type="Texture2D" uid="uid://eon5hjn7p40k" path="res://icon.svg" id="3_6i0jm"]
 
 [node name="MinionGroup" type="Node2D"]
 script = ExtResource("1_rp1po")
@@ -10,9 +12,15 @@ script = ExtResource("1_rp1po")
 [node name="Area2D" type="Area2D" parent="AveragePosition"]
 monitorable = false
 
+[node name="Arrow" parent="AveragePosition" instance=ExtResource("2_aeg7t")]
+
 [node name="Units" type="Node2D" parent="."]
 
 [node name="Target" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Target"]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("3_6i0jm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 5

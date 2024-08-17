@@ -1,11 +1,13 @@
-class_name Skeleton
+class_name Minion
 extends RigidBody2D
 
 @export var max_hp: int = 10
 @onready var hp :int = max_hp
 
+@onready var speed_variation := randf_range(0.9,1.1)
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: Sprite2D = $Offset/Sprite2D
 
 
 signal died

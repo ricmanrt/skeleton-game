@@ -1,3 +1,4 @@
+class_name MinionGroup
 extends Node2D
 
 signal unit_count_changed
@@ -18,7 +19,7 @@ signal unit_summoned
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var average_position: Marker2D = $AveragePosition
 @onready var near_area: Area2D = $AveragePosition/Area2D
-
+@onready var arrow: Node2D = $AveragePosition/Arrow
 
 
 @onready var unit_count: int = units.get_child_count():
@@ -76,6 +77,8 @@ func move_units(delta: float) -> void:
 		unit.apply_central_force(direction * unit_speed * delta * 20 )
 		avg_pos+= unit.position
 	avg_pos = avg_pos / unit_count
+	
 	average_position.position = avg_pos
+	
 	average_position.look_at(target.position)
-	#arrow.length = (avg_pos - target.position).length() - 32
+	arrow.length = (avg_pos - target.position).length() - 32

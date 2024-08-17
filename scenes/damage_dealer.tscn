@@ -7,4 +7,7 @@ collision_layer = 16
 collision_mask = 17
 script = ExtResource("1_tcoo3")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="target_hit" from="." to="." method="_on_target_hit"]
