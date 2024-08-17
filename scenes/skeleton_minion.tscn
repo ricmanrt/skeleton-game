@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcys1a5dhc4md"]
+
+[ext_resource type="PackedScene" uid="uid://dsrx8agfk76hv" path="res://scenes/minion.tscn" id="1_qa5ti"]
+[ext_resource type="Texture2D" uid="uid://1nk1s4h7p4dg" path="res://sprites/skeleman.png" id="2_q4yvd"]
+
+[node name="Skeleton" instance=ExtResource("1_qa5ti")]
+
+[node name="Sprite2D" parent="Offset" index="0"]
+texture = ExtResource("2_q4yvd")
+
+[node name="DamageTaker" parent="." index="2"]
+damage_group = 4
+
+[node name="DamageDealer" parent="." index="3"]
+damage_groups = 8

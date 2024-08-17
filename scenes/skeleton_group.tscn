@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpo3lombuo8ul"]
+
+[ext_resource type="PackedScene" uid="uid://baq3usgniqgk5" path="res://scenes/minion_group.tscn" id="1_kdhvc"]
+[ext_resource type="PackedScene" uid="uid://bcys1a5dhc4md" path="res://scenes/skeleton_minion.tscn" id="2_27vfl"]
+[ext_resource type="AudioStream" uid="uid://c0wxc6agi5dv6" path="res://sounds/skeleton_rise.ogg" id="3_x1u8d"]
+
+[node name="SkeletonGroup" instance=ExtResource("1_kdhvc")]
+unit_prefab = ExtResource("2_27vfl")
+summon_sound = ExtResource("3_x1u8d")

@@ -1,13 +1,12 @@
-[gd_scene load_steps=17 format=4 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=16 format=4 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
 [ext_resource type="Texture2D" uid="uid://dnisut2j0lohn" path="res://sprites/dungeon tilemap.png" id="2_edgkl"]
 [ext_resource type="TileSet" uid="uid://ch83v01htb5sm" path="res://resources/main_tileset.tres" id="2_plsb4"]
 [ext_resource type="Script" path="res://scripts/cursor.gd" id="3_2wbdm"]
-[ext_resource type="PackedScene" uid="uid://cccurwotrwytu" path="res://scenes/arrow.tscn" id="3_slm0g"]
-[ext_resource type="PackedScene" uid="uid://cou7l8r40feqs" path="res://scenes/skeleton.tscn" id="4_75sc2"]
 [ext_resource type="PackedScene" uid="uid://baq3usgniqgk5" path="res://scenes/minion_group.tscn" id="7_gse1f"]
+[ext_resource type="PackedScene" uid="uid://dpo3lombuo8ul" path="res://scenes/skeleton_group.tscn" id="7_m0wp3"]
 [ext_resource type="PackedScene" uid="uid://dsrx8agfk76hv" path="res://scenes/minion.tscn" id="8_07rje"]
 [ext_resource type="PackedScene" uid="uid://cp257dpd8ylda" path="res://scenes/pickup.tscn" id="9_lu2nb"]
 [ext_resource type="AudioStream" uid="uid://bcuiuonby0src" path="res://music/Retro Beat.ogg" id="10_lvsas"]
@@ -38,10 +37,6 @@ tile_set = ExtResource("2_plsb4")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AADx/wsAAQAEAAAAAADx/wwAAQAEAAEAAADy/wMAAQAEAAAAAADy/wQAAQAEAAEAAAD//wsAAQAEAAAAAAD//wwAAQAEAAEAAAAIAAwAAQAEAAAAAAAIAA0AAQAEAAEAAADs//X/AQAJAAMAAADt//X/AQAJAAMAAADu//X/AQAJAAMAAADv//X/AQAJAAMAAADw//X/AQAJAAMAAADx//X/AQAJAAMAAADy//X/AQAJAAMAAADz//X/AQAJAAMAAAD0//X/AQAJAAMAAAD1//X/AQAJAAMAAAD2//X/AQAJAAMAAAD3//X/AQAJAAMAAAD4//X/AQAJAAMAAAD5//X/AQAJAAMAAAD6//X/AQAJAAMAAAD7//X/AQAJAAMAAAD8//X/AQAJAAMAAAD9//X/AQAJAAMAAAD+//X/AQAJAAMAAAD///X/AQAJAAMAAAAAAPX/AQAJAAMAAAABAPX/AQAJAAMAAAACAPX/AQAJAAMAAAADAPX/AQAJAAMAAAAEAPX/AQAJAAMAAAAFAPX/AQAJAAMAAAAGAPX/AQAJAAMAAAAHAPX/AQAJAAMAAAAIAPX/AQAJAAMAAAAJAPX/AQAJAAMAAAAKAPX/AQAJAAMAAAALAPX/AQAJAAMAAAAMAPX/AQAJAAMAAAANAPX/AQAJAAMAAAAOAPX/AQAJAAMAAAAPAPX/AQAJAAMAAAAQAPX/AQAJAAMAAAARAPX/AQAJAAMAAAASAPX/AQAJAAMAAAATAPX/AQAJAAMAAAAUAPX/AQAJAAMAAAAVAPX/AQAJAAMAAAAWAPX/AQAJAAMAAAA=")
 tile_set = ExtResource("2_plsb4")
-
-[node name="SkeletonAverage" type="Marker2D" parent="."]
-
-[node name="Arrow" parent="SkeletonAverage" instance=ExtResource("3_slm0g")]
 
 [node name="Map objects" type="Node2D" parent="."]
 
@@ -78,16 +73,7 @@ position = Vector2(-214, 58)
 [node name="Target" parent="Groups/MinionGroup" index="2"]
 position = Vector2(77, 86)
 
-[node name="Skeletons" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="Skeleton" parent="Skeletons" instance=ExtResource("4_75sc2")]
-
-[node name="Skeleton2" parent="Skeletons" instance=ExtResource("4_75sc2")]
-position = Vector2(28, -8)
-
-[node name="Skeleton3" parent="Skeletons" instance=ExtResource("4_75sc2")]
-position = Vector2(19, 21)
+[node name="SkeletonGroup" parent="Groups" instance=ExtResource("7_m0wp3")]
 
 [node name="Player" parent="." instance=ExtResource("1_tfnp7")]
 unique_name_in_owner = true

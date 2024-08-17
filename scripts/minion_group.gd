@@ -7,7 +7,7 @@ signal unit_summoned
 
 @export var unit_prefab : PackedScene
 @export var unit_speed := 400
-@export var max_units: int
+@export var max_units: int = 128
 
 @export_category("audio")
 @export var summon_sound: AudioStream
@@ -31,8 +31,7 @@ func set_unit_count(v:int) ->void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	units.child_entered_tree.connect(func () : set_unit_count(units.get_child_count()))
-	units.child_exiting_tree.connect(func () : set_unit_count(unit_count -1))
+	unit_count = units.get_child_count()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,13 +67,17 @@ func summon_unit(pos: Vector2)-> void:
 
 
 func move_units(delta: float) -> void:
-	#set_unit_count(units.get_child_count())
+	set_unit_count(units.get_child_count())
+	if unit_count == 0: 
+		arrow.hide()
+		return
+	
 	var avg_pos := Vector2.ZERO
 	for s in units.get_children():
 		assert(s is RigidBody2D)
 		var unit := s as RigidBody2D
 		var direction := unit.position.direction_to(target.position)
-		unit.apply_central_force(direction * unit_speed * delta * 20 )
+		unit.apply_central_force(direction * unit_speed * delta * 60 )
 		avg_pos+= unit.position
 	avg_pos = avg_pos / unit_count
 	
@@ -82,3 +85,6 @@ func move_units(delta: float) -> void:
 	
 	average_position.look_at(target.position)
 	arrow.length = (avg_pos - target.position).length() - 32
+	
+	arrow.visible = arrow.length > 16
+	

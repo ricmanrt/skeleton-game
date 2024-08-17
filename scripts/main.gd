@@ -13,14 +13,13 @@ var camera_zoom := 1.0
 
 const SKELETON = preload("res://scenes/skeleton.tscn")
 
-@onready var skeletons: Node2D = %Skeletons
+
 @onready var player: RigidBody2D = %Player
 @onready var cursor: Sprite2D = $Cursor
-@onready var skeleton_average: Marker2D = $SkeletonAverage
-@onready var arrow: Node2D = $SkeletonAverage/Arrow
 @onready var camera: Camera2D = $Player/Camera2D
 
-var skeleton_count = 0;
+@onready var skeleton_group: MinionGroup = $Groups/SkeletonGroup
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,41 +35,16 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	camera_zoom = remap(skeleton_count, 0, max_skeletons, max_zoom, min_zoom)
+	skeleton_group.target.position = cursor.position
+		
+	camera_zoom = remap(skeleton_group.unit_count, 0, skeleton_group.max_units, max_zoom, min_zoom)
 	camera.zoom = lerp(camera.zoom, Vector2.ONE * camera_zoom, delta*zoom_speed)
 	
-	$UILayer/Control/SkeletonCount.text = "skeleton count: " + str(skeleton_count)
+	$UILayer/Control/SkeletonCount.text = "skeleton count: " + str(skeleton_group.unit_count)
 
-func _physics_process(delta: float) -> void:
-	move_skeletons(delta)
 
 func _on_pickup(pos : Vector2) -> void:
 	summon_skeleton(pos)
 
 func summon_skeleton(pos: Vector2)-> void:
-	if skeleton_count >= max_skeletons:
-		#TODO: find the weakest skeleton and kill it
-		skeletons.get_child(0).die()
-	
-	var s = SKELETON.instantiate()
-	s.position = pos
-	$SkeletonRaiseSound.pitch_scale = randf_range(0.7, 0.9)
-	$SkeletonRaiseSound.play()
-	skeletons.add_child.call_deferred(s)
-	
-
-func move_skeletons(delta: float) -> void:
-	skeleton_count = skeletons.get_child_count()
-	var avg_pos := Vector2.ZERO
-	for s in skeletons.get_children():
-		assert(s is RigidBody2D)
-		var skeleton := s as RigidBody2D
-		var direction := skeleton.position.direction_to(cursor.position)
-		skeleton.apply_central_force(direction * skeleton_speed * delta * 20 )
-		avg_pos+= skeleton.position
-	avg_pos = avg_pos / skeleton_count
-	
-	skeleton_average.position = avg_pos
-	skeleton_average.look_at(cursor.position)
-	
-	arrow.length = (avg_pos - cursor.position).length() - 32
+	skeleton_group.summon_unit(pos)

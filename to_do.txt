@@ -4,8 +4,8 @@ To do:
 	* github
 	* menu 
 	* game over 
-	* turn skeleton into generic unit minion that can be either skele or enemy
 	* fix explosion damage
+	* make explosion push more consistent 
 	* general juice
 	* damage numbers
 	* maybe make a damage flash script instead of animation, probably nah
@@ -36,3 +36,4 @@ Done:
 	* object defined by average position of units like skeletons rn,
 	* all go to a common target, 
 	* big area2D in average center can be a group proximity detector
+	* turn skeleton into generic unit minion that can be either skele or enemy
