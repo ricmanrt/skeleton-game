@@ -1,7 +1,7 @@
 To do:
 
 - general to_do: 
-	* github
+	* fix damage dealers so they keep hurting if they are still in the area
 	* menu 
 	* game over 
 	* fix explosion damage
@@ -9,7 +9,6 @@ To do:
 	* general juice
 	* damage numbers
 	* maybe make a damage flash script instead of animation, probably nah
-	* health_bar
 - more assets needed: 
 	* explosion
 	* projectile 
@@ -22,6 +21,9 @@ To do:
 
 
 Done: 
+* health_bar
+- item drops
+* github
 - skellies appear!
 - skellies can die
 - they do be following cursor

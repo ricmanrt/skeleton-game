@@ -1,16 +1,20 @@
 class_name Minion
 extends RigidBody2D
 
+
+signal died
+signal hp_changed(hp : int)
+
 @export var max_hp: int = 10
-@onready var hp :int = max_hp
+@onready var hp :int = max_hp:
+	set(v):
+		hp = v
+		hp_changed.emit(v)
 
 @onready var speed_variation := randf_range(0.9,1.1)
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Offset/Sprite2D
-
-
-signal died
 
 func die() ->void:
 	animation_player.play("death")
