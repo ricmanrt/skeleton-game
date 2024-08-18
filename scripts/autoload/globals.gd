@@ -2,4 +2,6 @@ extends Node
 
 var player : Player
 
-enum DamageGroups {PLAYER=2, SKELETONS=3, ENEMIES=8}
+var debug_message : String
+
+enum DamageGroups {PLAYER=2, SKELETONS=4, ENEMIES=8}

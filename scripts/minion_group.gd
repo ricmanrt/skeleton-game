@@ -14,6 +14,8 @@ signal unit_summoned
 @export var hit_sound: AudioStream
 @export var death_sound: AudioStream
 
+var moving = true
+
 @onready var units: Node2D = $Units
 @onready var target: Marker2D = $Target
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -30,9 +32,14 @@ func set_unit_count(v:int) ->void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var initial_offset := position
+	self.position = Vector2.ZERO #move back to 0 to avoid position nonsense
+	
 	unit_count = units.get_child_count()
 	for u in units.get_children():
 		assert (u is Minion )
+		u.position += initial_offset
+		average_position.position = u.position
 		connect_unit(u as Minion)
 
 func connect_unit(unit: Minion):
@@ -70,7 +77,7 @@ func summon_unit(pos: Vector2)-> void:
 
 func move_units(delta: float) -> void:
 	set_unit_count(units.get_child_count())
-	if unit_count == 0: 
+	if (not moving or unit_count == 0) : 
 		arrow.hide()
 		return
 	
@@ -86,7 +93,7 @@ func move_units(delta: float) -> void:
 	average_position.position = avg_pos
 	
 	average_position.look_at(target.position)
-	arrow.length = (avg_pos - target.position).length() - 32
+	arrow.length = min( 128,  (avg_pos - target.position).length() - 32 )
 	
-	arrow.visible = arrow.length > 16
+	arrow.visible = arrow.length > 16 #hide arrow if it isnt very long
 	

@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 	camera.zoom = lerp(camera.zoom, Vector2.ONE * camera_zoom, delta*zoom_speed)
 	
 	$UILayer/Control/SkeletonCount.text = "skeleton count: " + str(skeleton_group.unit_count)
+	%DebugLabel.text = Globals.debug_message
 
 func _on_item_drop(pos: Vector2) ->void: 
 	var d := PICKUP.instantiate()

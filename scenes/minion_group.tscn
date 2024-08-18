@@ -9,6 +9,7 @@ script = ExtResource("1_rp1po")
 [node name="AveragePosition" type="Marker2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="AveragePosition"]
+light_mask = 0
 monitorable = false
 
 [node name="Arrow" parent="AveragePosition" instance=ExtResource("2_aeg7t")]
