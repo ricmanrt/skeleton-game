@@ -13,4 +13,5 @@ texture = ExtResource("2_q4yvd")
 damage_group = 4
 
 [node name="DamageDealer" parent="." index="3"]
+impact = 30.0
 damage_groups = 8

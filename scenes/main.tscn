@@ -78,6 +78,9 @@ position = Vector2(290, 716)
 
 [node name="Groups" type="Node2D" parent="."]
 
+[node name="VillagerGroup" parent="Groups" instance=ExtResource("11_3dowd")]
+position = Vector2(27, 306)
+
 [node name="SkeletonGroup" parent="Groups" instance=ExtResource("7_m0wp3")]
 
 [node name="Player" parent="." instance=ExtResource("1_tfnp7")]
@@ -145,6 +148,3 @@ volume_db = -9.37
 pitch_scale = 0.69
 max_polyphony = 3
 bus = &"SFX"
-
-[node name="VillagerGroup" parent="." instance=ExtResource("11_3dowd")]
-position = Vector2(27, 306)

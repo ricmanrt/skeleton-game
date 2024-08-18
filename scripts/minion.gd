@@ -34,7 +34,6 @@ func die() -> void:
 
 func _on_damage_taken(damage_info: DamageInfo) -> void:
 	hp -= damage_info.damage
-	
 	apply_central_impulse(damage_info.impulse)
 	if(hp <= 0):
 		die()
