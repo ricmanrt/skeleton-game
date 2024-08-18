@@ -17,15 +17,15 @@ region = Rect2(153, 170, 16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8hmex"]
 radius = 7.07107
 
-[sub_resource type="Animation" id="Animation_p4062"]
-resource_name = "idle"
-loop_mode = 1
-
 [sub_resource type="Animation" id="Animation_pydda"]
 resource_name = "death"
 
 [sub_resource type="Animation" id="Animation_d2ows"]
 resource_name = "hit"
+
+[sub_resource type="Animation" id="Animation_p4062"]
+resource_name = "idle"
+loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_33105"]
 _data = {
