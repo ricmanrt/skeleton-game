@@ -1,7 +1,6 @@
 To do:
 
 - general to_do: 
-	* fix damage dealers so they keep hurting if they are still in the area
 	* menu 
 	* game over 
 	* fix explosion damage
@@ -10,6 +9,7 @@ To do:
 	* damage numbers
 	* maybe make a damage flash script instead of animation, probably nah
 - more assets needed: 
+	* music
 	* explosion
 	* projectile 
 	* ui design
@@ -21,6 +21,7 @@ To do:
 
 
 Done: 
+* fix damage dealers so they keep hurting if they are still in the area
 * health_bar
 - item drops
 * github

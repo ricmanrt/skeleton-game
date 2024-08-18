@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		group.moving = true
 
 func _on_body_entered(body: Node2D):
-	if false and body is Player:
+	if body is Player:
 		target = body
 		Globals.debug_message = "got target player"
 	elif target == null and body is Minion:
