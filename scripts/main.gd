@@ -13,7 +13,7 @@ var camera_zoom := 1.0
 
 const PICKUP = preload("res://scenes/pickup.tscn")
 
-@onready var player: RigidBody2D = %Player
+@onready var player: Player = %Player
 @onready var cursor: Sprite2D = $Cursor
 @onready var camera: Camera2D = $Player/Camera2D
 @onready var map_objects: Node2D = $"Map objects"
@@ -25,6 +25,8 @@ func _ready() -> void:
 	
 	GlobalEvents.skeleton_pickup.connect(_on_pickup)
 	GlobalEvents.item_dropped.connect(_on_item_drop)
+	
+	player.died.connect(_on_player_died)
 
 func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("ui_cancel") ):
@@ -41,6 +43,11 @@ func _process(delta: float) -> void:
 	
 	$UILayer/Control/SkeletonCount.text = "skeleton count: " + str(skeleton_group.unit_count)
 	%DebugLabel.text = Globals.debug_message
+
+func _on_player_died():
+	%GameOver.show()
+	self.set_process(false)
+
 
 func _on_item_drop(pos: Vector2) ->void: 
 	var d := PICKUP.instantiate()

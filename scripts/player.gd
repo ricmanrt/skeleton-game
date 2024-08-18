@@ -10,7 +10,6 @@ signal hp_changed(hp : int)
 		hp = v
 		hp_changed.emit(v)
 
-
 @export var speed :float = 2000
 @export var spell_cooldown = 0.5
 
@@ -65,5 +64,7 @@ func _on__damage_taken(damage_info: DamageInfo) -> void:
 
 func die() -> void:
 	dead = true
-	died.emit()
 	self.set_process(false)
+	self.set_physics_process(false)
+	died.emit()
+	
