@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=15 format=3 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://bcuiuonby0src" path="res://music/Retro Beat.ogg" id="10_lvsas"]
 [ext_resource type="FontFile" uid="uid://ckswc4iseblhr" path="res://fonts/Kenney Mini Square Mono.ttf" id="10_tjokw"]
 [ext_resource type="PackedScene" uid="uid://dlgp0cbxlsigq" path="res://scenes/enemies/villager_group.tscn" id="11_3dowd"]
-[ext_resource type="PackedScene" uid="uid://c4x7r3w1jowv2" path="res://scenes/HealthPickup.tscn" id="12_dywqv"]
 [ext_resource type="AudioStream" uid="uid://c0wxc6agi5dv6" path="res://sounds/skeleton_rise.ogg" id="12_eetql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydft4"]
@@ -31,13 +30,29 @@ script = ExtResource("1_i4sl8")
 
 [node name="Map objects" type="Node2D" parent="."]
 
-[node name="HealsthPickup" parent="Map objects" instance=ExtResource("12_dywqv")]
-position = Vector2(-244, 498)
-restoreammount = null
-damage_groups = null
-
 [node name="Pickup4" parent="Map objects" instance=ExtResource("9_lu2nb")]
 position = Vector2(-683, 47)
+
+[node name="Pickup11" parent="Map objects" instance=ExtResource("9_lu2nb")]
+position = Vector2(-1191, -141)
+
+[node name="Pickup12" parent="Map objects" instance=ExtResource("9_lu2nb")]
+position = Vector2(-1127, -142)
+
+[node name="Pickup13" parent="Map objects" instance=ExtResource("9_lu2nb")]
+position = Vector2(-1112, -110)
+
+[node name="Pickup14" parent="Map objects" instance=ExtResource("9_lu2nb")]
+position = Vector2(-1177, -109)
+
+[node name="Pickup15" parent="Map objects" instance=ExtResource("9_lu2nb")]
+position = Vector2(-1239, -136)
+
+[node name="Pickup16" parent="Map objects" instance=ExtResource("9_lu2nb")]
+position = Vector2(-1254, -110)
+
+[node name="Pickup17" parent="Map objects" instance=ExtResource("9_lu2nb")]
+position = Vector2(-1143, -92)
 
 [node name="Pickup5" parent="Map objects" instance=ExtResource("9_lu2nb")]
 position = Vector2(-777, 340)
@@ -53,6 +68,9 @@ position = Vector2(603, 82)
 
 [node name="Pickup" parent="Map objects" instance=ExtResource("9_lu2nb")]
 position = Vector2(13, 119)
+
+[node name="Pickup10" parent="Map objects" instance=ExtResource("9_lu2nb")]
+position = Vector2(-1223, -92)
 
 [node name="Pickup2" parent="Map objects" instance=ExtResource("9_lu2nb")]
 position = Vector2(-116, 70)
