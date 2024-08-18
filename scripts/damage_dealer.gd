@@ -32,7 +32,7 @@ func damage_all_targets() -> void:
 
 func deal_damage(a : DamageTaker) -> void:
 	if damage_groups & a.damage_group:
-		var impulse := position.direction_to(a.position) * impact
+		var impulse := global_position.direction_to(a.owner.global_position) * impact
 		a.damage_taken.emit(DamageInfo.new( damage, impulse))
 		target_hit.emit(a)
 

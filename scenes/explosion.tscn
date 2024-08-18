@@ -1,16 +1,89 @@
-[gd_scene load_steps=3 format=3 uid="uid://ndvtu2lvacyh"]
+[gd_scene load_steps=10 format=3 uid="uid://ndvtu2lvacyh"]
 
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="1_ywhg8"]
+[ext_resource type="Texture2D" uid="uid://cmfsjlx6fn1ro" path="res://sprites/GreenExplosion.png" id="2_26aq0"]
+[ext_resource type="AudioStream" uid="uid://dly0wjy723m0r" path="res://sounds/explosion2.ogg" id="2_ghbng"]
+[ext_resource type="PackedScene" uid="uid://sy466c6ibdsm" path="res://scenes/damage_dealer.tscn" id="3_ceol1"]
+
+[sub_resource type="Animation" id="Animation_khp3e"]
+resource_name = "explosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(3.5, 3.5), Vector2(0, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_ghbng")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_i2gcj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_utkbw"]
+_data = {
+"RESET": SubResource("Animation_i2gcj"),
+"explosion": SubResource("Animation_khp3e")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oolsk"]
+blend_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vhobv"]
-radius = 32.0
+radius = 24.0208
 
-[node name="Explosion" type="Area2D"]
+[node name="Explosion" type="Node2D"]
 script = ExtResource("1_ywhg8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_vhobv")
+libraries = {
+"": SubResource("AnimationLibrary_utkbw")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.466667)
+material = SubResource("CanvasItemMaterial_oolsk")
+texture = ExtResource("2_26aq0")
+
+[node name="DamageDealer" parent="." instance=ExtResource("3_ceol1")]
+impact = 600.0
+hit_delay = 99999.0
+damage_groups = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageDealer"]
+shape = SubResource("CircleShape2D_vhobv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.036
+max_polyphony = 3
+bus = &"SFX"

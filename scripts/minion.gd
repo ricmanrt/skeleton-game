@@ -11,15 +11,21 @@ signal hp_changed(hp : int)
 		hp = v
 		hp_changed.emit(v)
 
-@onready var speed_variation := randf_range(0.9,1.1)
+var dead = false
 
+@onready var speed_variation := randf_range(0.9,1.1)
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Offset/Sprite2D
+
+
 
 func _ready() -> void:
 	pass
 
 func die() -> void:
+	#only die once
+	if dead: return
+	dead = true
 	animation_player.play("death")
 	await animation_player.animation_finished
 	

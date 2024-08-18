@@ -9,6 +9,7 @@ extends Node2D
 var direction : Vector2
 var projectile_emitter : Node2D
 
+var exploded = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,5 +36,9 @@ func _on_damage_dealer_hit(body: Node2D) -> void:
 		explode()
 
 func explode()->void:
-	queue_free()
+	if exploded: return
+	exploded = true
+	
 	summon()
+	await get_tree().process_frame
+	queue_free()
