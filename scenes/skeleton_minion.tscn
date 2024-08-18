@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://1nk1s4h7p4dg" path="res://sprites/skeleman.png" id="2_q4yvd"]
 
 [node name="Skeleton" instance=ExtResource("1_qa5ti")]
+damage_group = 4
 
 [node name="Sprite2D" parent="Offset" index="0"]
 texture = ExtResource("2_q4yvd")

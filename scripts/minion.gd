@@ -4,6 +4,7 @@ extends RigidBody2D
 signal died
 signal hp_changed(hp : int)
 
+@export_enum("Player:2", "Skeletons:4", "Enemies:8") var damage_group: int;
 @export var max_hp: int = 10
 @onready var hp :int = max_hp:
 	set(v):
@@ -15,13 +16,15 @@ signal hp_changed(hp : int)
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Offset/Sprite2D
 
-func die() ->void:
+func _ready() -> void:
+	pass
+
+func die() -> void:
 	animation_player.play("death")
 	await animation_player.animation_finished
 	
 	died.emit()
 	queue_free()
-
 
 func _on_damage_taken(damage_info: DamageInfo) -> void:
 	hp -= damage_info.damage

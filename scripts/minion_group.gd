@@ -21,7 +21,6 @@ signal unit_summoned
 @onready var near_area: Area2D = $AveragePosition/Area2D
 @onready var arrow: Node2D = $AveragePosition/Arrow
 
-
 @onready var unit_count: int = units.get_child_count():
 	set = set_unit_count
 
@@ -42,19 +41,16 @@ func connect_unit(unit: Minion):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
+
 func _physics_process(delta: float) -> void:
 	move_units(delta)
 
-
 func _on_unit_death(unit) -> void:
 	unit_died.emit(unit)
-	#GlobalEvents.item_drop.emit(unit.position)
 	
 	audio_stream_player.pitch_scale = randf_range(0.7, 0.9)
 	audio_stream_player.stream = death_sound
 	audio_stream_player.play()
-
 
 func summon_unit(pos: Vector2)-> void:
 	if unit_count >= max_units:
@@ -68,11 +64,9 @@ func summon_unit(pos: Vector2)-> void:
 	connect_unit.call_deferred(s)
 	unit_summoned.emit.call_deferred()
 	
-	
 	audio_stream_player.pitch_scale = randf_range(0.7, 0.9)
 	audio_stream_player.stream = summon_sound
 	audio_stream_player.play()
-
 
 func move_units(delta: float) -> void:
 	set_unit_count(units.get_child_count())
@@ -82,10 +76,10 @@ func move_units(delta: float) -> void:
 	
 	var avg_pos := Vector2.ZERO
 	for s in units.get_children():
-		assert(s is RigidBody2D)
-		var unit := s as RigidBody2D
+		assert(s is Minion)
+		var unit := s as Minion
 		var direction := unit.position.direction_to(target.position)
-		unit.apply_central_force(direction * unit_speed * delta * 60 )
+		unit.apply_central_force(direction * unit_speed * unit.speed_variation * delta * 60 )
 		avg_pos+= unit.position
 	avg_pos = avg_pos / unit_count
 	

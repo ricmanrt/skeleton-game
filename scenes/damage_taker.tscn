@@ -3,9 +3,7 @@
 [ext_resource type="Script" path="res://scripts/damage_taker.gd" id="1_espgw"]
 
 [node name="DamageTaker" type="Area2D"]
-collision_layer = 0
-collision_mask = 16
-monitorable = false
+collision_layer = 16
+collision_mask = 0
+monitoring = false
 script = ExtResource("1_espgw")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]

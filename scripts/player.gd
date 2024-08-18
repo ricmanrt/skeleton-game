@@ -14,23 +14,22 @@ signal hp_changed(hp : int)
 @export var speed :float = 2000
 @export var spell_cooldown = 0.5
 
+var damage_group :int = Globals.DamageGroups.PLAYER
+
 var target_direction : Vector2
 var can_shoot := true
 
 
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 
-
 @onready var hand_rotation: Node2D = $"Sprite2D/Hand Rotation"
 @onready var hand: Marker2D = $"Sprite2D/Hand Rotation/Hand"
 @onready var spell_cooldown_timer: Timer = $SpellCooldown
 
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Globals.player = self
 
 
 func _physics_process(delta: float) -> void:
@@ -49,7 +48,6 @@ func _process(delta: float) -> void:
 		p.direction = hand.global_position.direction_to(get_global_mouse_position())
 		get_parent().add_child(p)
 		
-
 
 func _on_spell_cooldown_timeout() -> void:
 	can_shoot = true

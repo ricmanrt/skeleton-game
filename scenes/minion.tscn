@@ -134,6 +134,7 @@ _data = {
 [node name="Minion" type="RigidBody2D"]
 lock_rotation = true
 script = ExtResource("1_5ei4y")
+damage_group = 8
 
 [node name="Offset" type="Node2D" parent="."]
 position = Vector2(0, -8)

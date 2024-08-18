@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=15 format=4 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cp257dpd8ylda" path="res://scenes/pickup.tscn" id="9_lu2nb"]
 [ext_resource type="AudioStream" uid="uid://bcuiuonby0src" path="res://music/Retro Beat.ogg" id="10_lvsas"]
 [ext_resource type="FontFile" uid="uid://ckswc4iseblhr" path="res://fonts/Kenney Mini Square Mono.ttf" id="10_tjokw"]
+[ext_resource type="PackedScene" uid="uid://dsrx8agfk76hv" path="res://scenes/minion.tscn" id="11_d7i1q"]
 [ext_resource type="AudioStream" uid="uid://c0wxc6agi5dv6" path="res://sounds/skeleton_rise.ogg" id="12_eetql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydft4"]
@@ -136,3 +137,6 @@ volume_db = -9.37
 pitch_scale = 0.69
 max_polyphony = 3
 bus = &"SFX"
+
+[node name="Minion" parent="." instance=ExtResource("11_d7i1q")]
+position = Vector2(-52, 232)

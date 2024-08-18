@@ -15,7 +15,6 @@ func _ready() -> void:
 	damage_dealer.body_hit.connect(_on_damage_dealer_hit)
 	damage_dealer.target_hit.connect(_on_damage_dealer_hit)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	position += direction * velocity * delta 
@@ -28,7 +27,6 @@ func summon() -> void:
 
 func _on_lifetime_timeout() -> void:
 	explode()
-
 
 func _on_damage_dealer_hit(body: Node2D) -> void:
 	if body == projectile_emitter: 

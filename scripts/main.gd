@@ -11,7 +11,6 @@ extends Node2D
 
 var camera_zoom := 1.0
 
-const SKELETON = preload("res://scenes/skeleton.tscn")
 const PICKUP = preload("res://scenes/pickup.tscn")
 
 @onready var player: RigidBody2D = %Player
@@ -19,7 +18,6 @@ const PICKUP = preload("res://scenes/pickup.tscn")
 @onready var camera: Camera2D = $Player/Camera2D
 @onready var map_objects: Node2D = $"Map objects"
 @onready var skeleton_group: MinionGroup = $Groups/SkeletonGroup
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
