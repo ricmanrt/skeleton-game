@@ -95,15 +95,16 @@ texture = SubResource("AtlasTexture_jk2ri")
 [node name="Groups" type="Node2D" parent="."]
 
 [node name="VillagerGroup" parent="Groups" instance=ExtResource("11_3dowd")]
-position = Vector2(-226, 620)
+position = Vector2(-205, 642)
 
 [node name="VillagerGroup4" parent="Groups" instance=ExtResource("11_3dowd")]
 position = Vector2(444, 617)
 
 [node name="SkeletonGroup" parent="Groups" instance=ExtResource("7_m0wp3")]
+position = Vector2(6, -101)
 
 [node name="VillagerGroup2" parent="Groups" instance=ExtResource("11_3dowd")]
-position = Vector2(-161, 1023)
+position = Vector2(-144, 1034)
 
 [node name="VillagerGroup3" parent="Groups" instance=ExtResource("11_3dowd")]
 position = Vector2(122, 1147)
@@ -121,7 +122,7 @@ position = Vector2(-397, 558)
 position = Vector2(-1172, 446)
 
 [node name="GuardGroup5" parent="Groups" instance=ExtResource("7_sx5ow")]
-position = Vector2(-1117, 394)
+position = Vector2(-1109, 410)
 
 [node name="GuardGroup6" parent="Groups" instance=ExtResource("7_sx5ow")]
 position = Vector2(-1085, 449)
@@ -218,3 +219,6 @@ volume_db = -9.37
 pitch_scale = 0.69
 max_polyphony = 3
 bus = &"SFX"
+
+[node name="GuardGroup" parent="." instance=ExtResource("7_sx5ow")]
+position = Vector2(-690, 683)
