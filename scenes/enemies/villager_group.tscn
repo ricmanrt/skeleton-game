@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://baq3usgniqgk5" path="res://scenes/minion_group.tscn" id="1_67fc7"]
 [ext_resource type="PackedScene" uid="uid://dsrx8agfk76hv" path="res://scenes/minion.tscn" id="2_4lfit"]
-[ext_resource type="Script" path="res://scripts/basic_ai.gd" id="3_7c0wo"]
+[ext_resource type="Script" path="res://scripts/vilager_ai.gd" id="3_bde76"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0365h"]
 radius = 163.028
@@ -28,5 +28,5 @@ position = Vector2(-14, 28)
 [node name="Minion4" parent="Units" index="3" instance=ExtResource("2_4lfit")]
 position = Vector2(51, -28)
 
-[node name="BasicAI" type="Node" parent="." index="4"]
-script = ExtResource("3_7c0wo")
+[node name="VilagerAI" type="Node" parent="." index="4"]
+script = ExtResource("3_bde76")

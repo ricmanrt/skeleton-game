@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=16 format=3 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dnisut2j0lohn" path="res://sprites/dungeon tilemap.png" id="2_edgkl"]
 [ext_resource type="Script" path="res://scripts/cursor.gd" id="3_2wbdm"]
 [ext_resource type="PackedScene" uid="uid://dpo3lombuo8ul" path="res://scenes/skeleton_group.tscn" id="7_m0wp3"]
+[ext_resource type="PackedScene" uid="uid://chnbdtfp0h7ja" path="res://scenes/enemies/guard_group.tscn" id="7_sx5ow"]
 [ext_resource type="PackedScene" uid="uid://cp257dpd8ylda" path="res://scenes/pickup.tscn" id="9_lu2nb"]
 [ext_resource type="AudioStream" uid="uid://bcuiuonby0src" path="res://music/Retro Beat.ogg" id="10_lvsas"]
 [ext_resource type="FontFile" uid="uid://ckswc4iseblhr" path="res://fonts/Kenney Mini Square Mono.ttf" id="10_tjokw"]
@@ -94,13 +95,22 @@ texture = SubResource("AtlasTexture_jk2ri")
 [node name="Groups" type="Node2D" parent="."]
 
 [node name="VillagerGroup" parent="Groups" instance=ExtResource("11_3dowd")]
-position = Vector2(27, 306)
+position = Vector2(46, 233)
 
 [node name="SkeletonGroup" parent="Groups" instance=ExtResource("7_m0wp3")]
 
+[node name="GuardGroup3" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(113, 1080)
+
+[node name="GuardGroup2" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-41, 1069)
+
+[node name="GuardGroup" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-397, 558)
+
 [node name="Player" parent="." instance=ExtResource("1_tfnp7")]
 unique_name_in_owner = true
-position = Vector2(22, -36)
+position = Vector2(21, -189)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
