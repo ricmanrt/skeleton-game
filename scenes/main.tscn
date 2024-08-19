@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=20 format=4 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bcuiuonby0src" path="res://music/Retro Beat.ogg" id="10_lvsas"]
 [ext_resource type="FontFile" uid="uid://ckswc4iseblhr" path="res://fonts/Kenney Mini Square Mono.ttf" id="10_tjokw"]
 [ext_resource type="PackedScene" uid="uid://dlgp0cbxlsigq" path="res://scenes/enemies/villager_group.tscn" id="11_3dowd"]
+[ext_resource type="PackedScene" uid="uid://cmbm0hfqk6scp" path="res://scenes/game_over.tscn" id="12_5pi4c"]
 [ext_resource type="AudioStream" uid="uid://c0wxc6agi5dv6" path="res://sounds/skeleton_rise.ogg" id="12_eetql"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rpxfc"]
@@ -244,6 +245,10 @@ offset_left = 288.0
 offset_top = 8.0
 offset_right = 328.0
 offset_bottom = 31.0
+
+[node name="GameOver" parent="UILayer" instance=ExtResource("12_5pi4c")]
+unique_name_in_owner = true
+visible = false
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_lvsas")
