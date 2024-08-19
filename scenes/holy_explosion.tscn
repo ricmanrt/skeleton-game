@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://da0hlcxamwsp"]
+
+[ext_resource type="PackedScene" uid="uid://ndvtu2lvacyh" path="res://scenes/explosion.tscn" id="1_csrd1"]
+[ext_resource type="Texture2D" uid="uid://bna48o5aglk7t" path="res://sprites/YellowExplosion.png" id="2_qho8d"]
+
+[node name="Explosion" instance=ExtResource("1_csrd1")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_qho8d")

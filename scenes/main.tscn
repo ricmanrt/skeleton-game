@@ -95,18 +95,63 @@ texture = SubResource("AtlasTexture_jk2ri")
 [node name="Groups" type="Node2D" parent="."]
 
 [node name="VillagerGroup" parent="Groups" instance=ExtResource("11_3dowd")]
-position = Vector2(46, 233)
+position = Vector2(-226, 620)
+
+[node name="VillagerGroup4" parent="Groups" instance=ExtResource("11_3dowd")]
+position = Vector2(444, 617)
 
 [node name="SkeletonGroup" parent="Groups" instance=ExtResource("7_m0wp3")]
 
+[node name="VillagerGroup2" parent="Groups" instance=ExtResource("11_3dowd")]
+position = Vector2(-161, 1023)
+
+[node name="VillagerGroup3" parent="Groups" instance=ExtResource("11_3dowd")]
+position = Vector2(122, 1147)
+
 [node name="GuardGroup3" parent="Groups" instance=ExtResource("7_sx5ow")]
-position = Vector2(113, 1080)
+position = Vector2(632, 1182)
 
 [node name="GuardGroup2" parent="Groups" instance=ExtResource("7_sx5ow")]
-position = Vector2(-41, 1069)
+position = Vector2(578, 1235)
 
 [node name="GuardGroup" parent="Groups" instance=ExtResource("7_sx5ow")]
 position = Vector2(-397, 558)
+
+[node name="GuardGroup4" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-1172, 446)
+
+[node name="GuardGroup5" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-1117, 394)
+
+[node name="GuardGroup6" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-1085, 449)
+
+[node name="GuardGroup7" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-1266, 893)
+
+[node name="GuardGroup8" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-1055, 1107)
+
+[node name="GuardGroup9" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-1467, 1104)
+
+[node name="GuardGroup10" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-1269, 1214)
+
+[node name="GuardGroup11" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-1287, 1008)
+
+[node name="GuardGroup12" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-41, 1141)
+
+[node name="VillagerGroup5" parent="Groups" instance=ExtResource("11_3dowd")]
+position = Vector2(-1004, 872)
+
+[node name="VillagerGroup6" parent="Groups" instance=ExtResource("11_3dowd")]
+position = Vector2(-1181, 724)
+
+[node name="VillagerGroup7" parent="Groups" instance=ExtResource("11_3dowd")]
+position = Vector2(-821, 1056)
 
 [node name="Player" parent="." instance=ExtResource("1_tfnp7")]
 unique_name_in_owner = true

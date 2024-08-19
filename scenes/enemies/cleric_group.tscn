@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcxusjjjaoirk"]
+
+[ext_resource type="PackedScene" uid="uid://baq3usgniqgk5" path="res://scenes/minion_group.tscn" id="1_hwau6"]
+[ext_resource type="Script" path="res://scripts/cleric_ai.gd" id="2_w0tjs"]
+[ext_resource type="PackedScene" uid="uid://qj6mynq1c3se" path="res://scenes/cleric.tscn" id="3_4mrn8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x724p"]
+radius = 163.371
+
+[node name="ClericGroup" instance=ExtResource("1_hwau6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AveragePosition/Area2D" index="0"]
+shape = SubResource("CircleShape2D_x724p")
+
+[node name="Node" type="Node" parent="." index="4"]
+script = ExtResource("2_w0tjs")
+
+[node name="SpellCooldown" type="Timer" parent="." index="5"]
+
+[node name="Minion" parent="." index="6" instance=ExtResource("3_4mrn8")]
+position = Vector2(0, 5)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bthhlbvbo6wod"]
+
+[ext_resource type="PackedScene" uid="uid://dsrx8agfk76hv" path="res://scenes/minion.tscn" id="1_bfop7"]
+[ext_resource type="Texture2D" uid="uid://dnisut2j0lohn" path="res://sprites/dungeon tilemap.png" id="2_5hkka"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bhn2"]
+atlas = ExtResource("2_5hkka")
+region = Rect2(16.7681, 137.138, 16.3756, 15.0511)
+
+[node name="Minion" instance=ExtResource("1_bfop7")]
+
+[node name="Sprite2D" parent="Offset" index="0"]
+texture = SubResource("AtlasTexture_4bhn2")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlgp0cbxlsigq"]
 
 [ext_resource type="PackedScene" uid="uid://baq3usgniqgk5" path="res://scenes/minion_group.tscn" id="1_67fc7"]
-[ext_resource type="PackedScene" uid="uid://dsrx8agfk76hv" path="res://scenes/minion.tscn" id="2_4lfit"]
 [ext_resource type="Script" path="res://scripts/vilager_ai.gd" id="3_bde76"]
+[ext_resource type="PackedScene" uid="uid://xxxakq433ult" path="res://scenes/vilager.tscn" id="3_n1epv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0365h"]
 radius = 163.028
@@ -16,17 +16,20 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AveragePosition/Area2D" index="0"]
 shape = SubResource("CircleShape2D_0365h")
 
-[node name="Minion" parent="Units" index="0" instance=ExtResource("2_4lfit")]
-position = Vector2(-21, -14)
+[node name="Minion" parent="Units" index="0" instance=ExtResource("3_n1epv")]
+position = Vector2(-3, 5)
 
-[node name="Minion2" parent="Units" index="1" instance=ExtResource("2_4lfit")]
-position = Vector2(17, -63)
+[node name="Minion2" parent="Units" index="1" instance=ExtResource("3_n1epv")]
+position = Vector2(-21, -11)
 
-[node name="Minion3" parent="Units" index="2" instance=ExtResource("2_4lfit")]
-position = Vector2(-14, 28)
+[node name="Minion3" parent="Units" index="2" instance=ExtResource("3_n1epv")]
+position = Vector2(37, -33)
 
-[node name="Minion4" parent="Units" index="3" instance=ExtResource("2_4lfit")]
-position = Vector2(51, -28)
+[node name="Minion4" parent="Units" index="3" instance=ExtResource("3_n1epv")]
+position = Vector2(-12, -47)
+
+[node name="Minion5" parent="Units" index="4" instance=ExtResource("3_n1epv")]
+position = Vector2(-53, -31)
 
 [node name="VilagerAI" type="Node" parent="." index="4"]
 script = ExtResource("3_bde76")
