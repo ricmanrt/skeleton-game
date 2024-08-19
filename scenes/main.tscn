@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=20 format=3 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
@@ -13,6 +13,16 @@
 [ext_resource type="PackedScene" uid="uid://dlgp0cbxlsigq" path="res://scenes/enemies/villager_group.tscn" id="11_3dowd"]
 [ext_resource type="AudioStream" uid="uid://c0wxc6agi5dv6" path="res://sounds/skeleton_rise.ogg" id="12_eetql"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rpxfc"]
+normal = Vector2(-0.0159812, -0.999872)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nxrpv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r5cfu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4gg27"]
+normal = Vector2(-0.00187029, 0.999998)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydft4"]
 size = Vector2(14, 14)
 
@@ -26,6 +36,27 @@ region = Rect2(0, 85, 16, 16)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_i4sl8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-1, -270)
+rotation = 3.13972
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_rpxfc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1566.5, -268.066)
+rotation = 4.71565
+shape = SubResource("WorldBoundaryShape2D_nxrpv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-784.493, -271.47)
+rotation = 1.56146
+shape = SubResource("WorldBoundaryShape2D_r5cfu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.02357, -1614)
+shape = SubResource("WorldBoundaryShape2D_4gg27")
 
 [node name="Map" parent="." instance=ExtResource("2_b6six")]
 
@@ -154,11 +185,19 @@ position = Vector2(-1181, 724)
 [node name="VillagerGroup7" parent="Groups" instance=ExtResource("11_3dowd")]
 position = Vector2(-821, 1056)
 
+[node name="GuardGroup13" parent="Groups" instance=ExtResource("7_sx5ow")]
+position = Vector2(-690, 683)
+
 [node name="Player" parent="." instance=ExtResource("1_tfnp7")]
 unique_name_in_owner = true
 position = Vector2(21, -189)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -1569
+limit_top = -270
+limit_right = 780
+limit_bottom = 1350
+limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -220,5 +259,4 @@ pitch_scale = 0.69
 max_polyphony = 3
 bus = &"SFX"
 
-[node name="GuardGroup" parent="." instance=ExtResource("7_sx5ow")]
-position = Vector2(-690, 683)
+[node name="Bound" type="Node2D" parent="."]
