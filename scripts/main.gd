@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	camera_zoom = remap(skeleton_group.unit_count, 0, skeleton_group.max_units, max_zoom, min_zoom)
 	camera.zoom = lerp(camera.zoom, Vector2.ONE * camera_zoom, delta*zoom_speed)
 	
-	$UILayer/Control/SkeletonCount.text = "skeleton count: " + str(skeleton_group.unit_count)
+	%SkeletonCount.text = "skeleton count: " + str(skeleton_group.unit_count)
 	%DebugLabel.text = Globals.debug_message
 
 func _on_player_died():

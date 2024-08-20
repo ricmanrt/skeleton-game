@@ -3,6 +3,7 @@ extends RigidBody2D
 
 signal died
 signal hp_changed(hp : int)
+signal finished_talking
 
 @export var max_hp: int = 20
 @onready var hp :int = max_hp:
@@ -17,6 +18,7 @@ var damage_group :int = Globals.DamageGroups.PLAYER
 var dead = false
 var target_direction : Vector2
 var can_shoot := true
+var talking = false
 
 const PROJECTILE = preload("res://scenes/projectile.tscn")
 
@@ -25,6 +27,7 @@ const PROJECTILE = preload("res://scenes/projectile.tscn")
 @onready var spell_cooldown_timer: Timer = $SpellCooldown
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var speech_label: Label = %SpeechLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -68,3 +71,22 @@ func die() -> void:
 	self.set_physics_process(false)
 	died.emit()
 	
+func talk(text : String) -> void:
+	if talking:
+		await finished_talking
+		talk(text)
+		return
+	else:
+		talking = true
+	
+	speech_label.text = text
+	speech_label.visible_ratio = 0.0
+	speech_label.visible = true
+	var t = create_tween().tween_property(speech_label,"visible_ratio", 1.0, 2.0)
+	
+	await  t.finished
+	await get_tree().create_timer(1.5).timeout
+	
+	speech_label.visible = false
+	talking = false
+	finished_talking.emit()

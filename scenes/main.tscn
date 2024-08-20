@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=24 format=3 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
@@ -14,16 +14,7 @@
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="11_4ax83"]
 [ext_resource type="PackedScene" uid="uid://cmbm0hfqk6scp" path="res://scenes/game_over.tscn" id="12_5pi4c"]
 [ext_resource type="AudioStream" uid="uid://c0wxc6agi5dv6" path="res://sounds/skeleton_rise.ogg" id="12_eetql"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rpxfc"]
-normal = Vector2(-0.0159812, -0.999872)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nxrpv"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r5cfu"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4gg27"]
-normal = Vector2(-0.00187029, 0.999998)
+[ext_resource type="PackedScene" uid="uid://ie0ohgrveno8" path="res://scenes/win_screen.tscn" id="13_00dhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydft4"]
 size = Vector2(14, 14)
@@ -32,33 +23,26 @@ size = Vector2(14, 14)
 atlas = ExtResource("2_edgkl")
 region = Rect2(51, 85, 16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nmp"]
+size = Vector2(1413.29, 381.647)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nxrpv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r5cfu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4gg27"]
+normal = Vector2(-0.00187029, 0.999998)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_q1u8k"]
 atlas = ExtResource("2_edgkl")
 region = Rect2(0, 85, 16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g41ls"]
+size = Vector2(351, 274)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_i4sl8")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-1, -270)
-rotation = 3.13972
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_rpxfc")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1566.5, -268.066)
-rotation = 4.71565
-shape = SubResource("WorldBoundaryShape2D_nxrpv")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-784.493, -271.47)
-rotation = 1.56146
-shape = SubResource("WorldBoundaryShape2D_r5cfu")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2.02357, -1614)
-shape = SubResource("WorldBoundaryShape2D_4gg27")
+max_zoom = 1.0
 
 [node name="Map" parent="." instance=ExtResource("2_b6six")]
 
@@ -102,6 +86,9 @@ position = Vector2(603, 82)
 
 [node name="Pickup" parent="Map objects" instance=ExtResource("9_lu2nb")]
 position = Vector2(13, 119)
+
+[node name="Pickup18" parent="Map objects" instance=ExtResource("9_lu2nb")]
+position = Vector2(22, -67)
 
 [node name="Pickup10" parent="Map objects" instance=ExtResource("9_lu2nb")]
 position = Vector2(-1223, -92)
@@ -190,13 +177,40 @@ position = Vector2(-821, 1056)
 [node name="GuardGroup13" parent="Groups" instance=ExtResource("7_sx5ow")]
 position = Vector2(-690, 683)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-1, -270)
+rotation = 3.13972
+
+[node name="TopLeftLimit" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(976.647, 189.329)
+shape = SubResource("RectangleShape2D_k8nmp")
+debug_color = Color(0.838708, 0.349023, 0.43313, 0.42)
+
+[node name="TopRightLimit" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-981.356, 189.163)
+shape = SubResource("RectangleShape2D_k8nmp")
+debug_color = Color(0.838708, 0.349023, 0.43313, 0.42)
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1566.5, -269.066)
+rotation = 4.71565
+shape = SubResource("WorldBoundaryShape2D_nxrpv")
+
+[node name="RightBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-784.493, -271.47)
+rotation = 1.56146
+shape = SubResource("WorldBoundaryShape2D_r5cfu")
+
+[node name="BottomBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-4.97746, -1614.01)
+shape = SubResource("WorldBoundaryShape2D_4gg27")
+
 [node name="Player" parent="." instance=ExtResource("1_tfnp7")]
 unique_name_in_owner = true
-position = Vector2(21, -189)
+position = Vector2(26, -975)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -1569
-limit_top = -270
 limit_right = 780
 limit_bottom = 1350
 limit_smoothed = true
@@ -216,14 +230,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SkeletonCount" type="Label" parent="UILayer/Control"]
-layout_mode = 0
-offset_top = 17.0
-offset_right = 192.0
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("10_tjokw")
-text = "Skeleton Count: "
-
 [node name="ScoreLabel" type="Label" parent="UILayer/Control"]
 layout_mode = 0
 offset_right = 192.0
@@ -232,24 +238,9 @@ theme_override_fonts/font = ExtResource("10_tjokw")
 text = "Score: "
 script = ExtResource("11_4ax83")
 
-[node name="Label" type="Label" parent="UILayer/Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 214.0
-offset_right = 204.0
-offset_bottom = 315.0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("10_tjokw")
-text = "WASD to move
-click shoot
-Enter summon skeleman
-Esc quit"
-
 [node name="DebugLabel" type="Label" parent="UILayer/Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 288.0
 offset_top = 8.0
@@ -259,6 +250,8 @@ offset_bottom = 31.0
 [node name="GameOver" parent="UILayer" instance=ExtResource("12_5pi4c")]
 unique_name_in_owner = true
 visible = false
+
+[node name="WinScreen" parent="UILayer" instance=ExtResource("13_00dhm")]
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_lvsas")
@@ -275,3 +268,20 @@ max_polyphony = 3
 bus = &"SFX"
 
 [node name="Bound" type="Node2D" parent="."]
+
+[node name="Win Area" type="Area2D" parent="."]
+position = Vector2(-1264, 1080)
+
+[node name="SkeletonCount" type="Label" parent="Win Area"]
+unique_name_in_owner = true
+offset_left = -92.0
+offset_top = -54.0
+offset_right = 100.0
+offset_bottom = -31.0
+theme_override_fonts/font = ExtResource("10_tjokw")
+text = "Skeleton Count: "
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win Area"]
+shape = SubResource("RectangleShape2D_g41ls")
+debug_color = Color(0.708139, 0.583043, 0.211328, 0.42)

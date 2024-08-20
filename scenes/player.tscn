@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3057xsnq11lq"]
+[gd_scene load_steps=14 format=3 uid="uid://c3057xsnq11lq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_07jwv"]
 [ext_resource type="Texture2D" uid="uid://dnisut2j0lohn" path="res://sprites/dungeon tilemap.png" id="2_gr3lw"]
 [ext_resource type="PackedScene" uid="uid://bffj27bdkwpnw" path="res://scenes/damage_taker.tscn" id="3_63fsy"]
 [ext_resource type="PackedScene" uid="uid://c2amf5pks6fkh" path="res://scenes/health_bar.tscn" id="4_li2g4"]
+[ext_resource type="Theme" uid="uid://c7pmv0x8csomh" path="res://resources/ui_theme.tres" id="5_rk6pc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sd3x0"]
 atlas = ExtResource("2_gr3lw")
@@ -77,6 +78,25 @@ debug_color = Color(0, 0.651266, 0.0154943, 0.42)
 
 [node name="HealthBar" parent="." instance=ExtResource("4_li2g4")]
 position = Vector2(-13, 2)
+
+[node name="Container" type="CenterContainer" parent="."]
+offset_left = -80.0
+offset_top = -76.0
+offset_right = 78.0
+offset_bottom = -19.0
+
+[node name="SpeechLabel" type="Label" parent="Container"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(165.12, 0)
+layout_mode = 2
+theme = ExtResource("5_rk6pc")
+theme_override_font_sizes/font_size = 8
+text = "Test text here  lalsladflskadfj sdjl ksadfj klsdfj sakldfj ksld sdlka kd   ksdlj klsad  klsd lksd fjkl sa lkd jf sakdlfj s"
+horizontal_alignment = 1
+autowrap_mode = 3
+visible_characters = 101
+visible_ratio = 0.83
 
 [connection signal="timeout" from="SpellCooldown" to="." method="_on_spell_cooldown_timeout"]
 [connection signal="damage_taken" from="DamageTaker" to="." method="_on__damage_taken"]
