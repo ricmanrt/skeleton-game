@@ -1,17 +1,16 @@
 To do:
 
 - general to_do: 
-	* menu 
-	* game over 
-	* fix explosion damage
-	* make explosion push more consistent 
-	* general juice
+	* win screen
+	* win condition
+	* show objective
+	* clean UI
 	* damage numbers
+	* general juice
+	* menu 
 	* maybe make a damage flash script instead of animation, probably nah
 - more assets needed: 
 	* music
-	* explosion
-	* projectile 
 	* ui design
 - game design needed: 
 	* story
@@ -21,6 +20,9 @@ To do:
 
 
 Done: 
+	* game over 
+	* fix explosion damage
+	* make explosion push more consistent 
 * fix damage dealers so they keep hurting if they are still in the area
 * health_bar
 - item drops
