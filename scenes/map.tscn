@@ -32,7 +32,7 @@ offset_bottom = -885.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_1e12l")
 text = "Use WASD to move
-Esc to quit"
+Esc to Pause"
 
 [node name="Label2" type="Label" parent="."]
 anchors_preset = 2

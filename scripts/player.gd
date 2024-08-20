@@ -66,6 +66,8 @@ func _on__damage_taken(damage_info: DamageInfo) -> void:
 		animation_player.play("idle")
 
 func die() -> void:
+	if dead:
+		return
 	dead = true
 	self.set_process(false)
 	self.set_physics_process(false)

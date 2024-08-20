@@ -8,6 +8,7 @@ atlas = ExtResource("2_5hkka")
 region = Rect2(16.7681, 137.138, 16.3756, 15.0511)
 
 [node name="Minion" instance=ExtResource("1_bfop7")]
+max_hp = 13
 
 [node name="Sprite2D" parent="Offset" index="0"]
 texture = SubResource("AtlasTexture_4bhn2")

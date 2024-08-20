@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=26 format=3 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
@@ -8,13 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://dpo3lombuo8ul" path="res://scenes/skeleton_group.tscn" id="7_m0wp3"]
 [ext_resource type="PackedScene" uid="uid://chnbdtfp0h7ja" path="res://scenes/enemies/guard_group.tscn" id="7_sx5ow"]
 [ext_resource type="PackedScene" uid="uid://cp257dpd8ylda" path="res://scenes/pickup.tscn" id="9_lu2nb"]
-[ext_resource type="AudioStream" uid="uid://bcuiuonby0src" path="res://music/Retro Beat.ogg" id="10_lvsas"]
 [ext_resource type="FontFile" uid="uid://ckswc4iseblhr" path="res://fonts/Kenney Mini Square Mono.ttf" id="10_tjokw"]
 [ext_resource type="PackedScene" uid="uid://dlgp0cbxlsigq" path="res://scenes/enemies/villager_group.tscn" id="11_3dowd"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="11_4ax83"]
 [ext_resource type="PackedScene" uid="uid://cmbm0hfqk6scp" path="res://scenes/game_over.tscn" id="12_5pi4c"]
 [ext_resource type="AudioStream" uid="uid://c0wxc6agi5dv6" path="res://sounds/skeleton_rise.ogg" id="12_eetql"]
 [ext_resource type="PackedScene" uid="uid://ie0ohgrveno8" path="res://scenes/win_screen.tscn" id="13_00dhm"]
+[ext_resource type="PackedScene" uid="uid://e6clsaeoxwhu" path="res://scenes/pause_screen.tscn" id="14_u162m"]
+[ext_resource type="AudioStream" uid="uid://chmbsq83n50u3" path="res://music/Cheerful Annoyance.ogg" id="15_htawd"]
+[ext_resource type="PackedScene" uid="uid://dcxusjjjaoirk" path="res://scenes/enemies/cleric_group.tscn" id="16_y2s4l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydft4"]
 size = Vector2(14, 14)
@@ -103,13 +105,33 @@ position = Vector2(-142, 236)
 position = Vector2(290, 716)
 
 [node name="Box" type="RigidBody2D" parent="Map objects"]
-position = Vector2(-20, 43)
+position = Vector2(-33, 51)
 lock_rotation = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map objects/Box"]
 shape = SubResource("RectangleShape2D_ydft4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Map objects/Box"]
+texture = SubResource("AtlasTexture_jk2ri")
+
+[node name="Box2" type="RigidBody2D" parent="Map objects"]
+position = Vector2(-122, 152)
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map objects/Box2"]
+shape = SubResource("RectangleShape2D_ydft4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Map objects/Box2"]
+texture = SubResource("AtlasTexture_jk2ri")
+
+[node name="Box3" type="RigidBody2D" parent="Map objects"]
+position = Vector2(11, 170)
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map objects/Box3"]
+shape = SubResource("RectangleShape2D_ydft4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Map objects/Box3"]
 texture = SubResource("AtlasTexture_jk2ri")
 
 [node name="Groups" type="Node2D" parent="."]
@@ -232,8 +254,10 @@ offset_bottom = 40.0
 
 [node name="ScoreLabel" type="Label" parent="UILayer/Control"]
 layout_mode = 0
-offset_right = 192.0
-offset_bottom = 23.0
+offset_left = 19.0
+offset_top = 16.0
+offset_right = 211.0
+offset_bottom = 39.0
 theme_override_fonts/font = ExtResource("10_tjokw")
 text = "Score: "
 script = ExtResource("11_4ax83")
@@ -252,9 +276,15 @@ unique_name_in_owner = true
 visible = false
 
 [node name="WinScreen" parent="UILayer" instance=ExtResource("13_00dhm")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseScreen" parent="UILayer" instance=ExtResource("14_u162m")]
+unique_name_in_owner = true
+visible = false
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_lvsas")
+stream = ExtResource("15_htawd")
 volume_db = -8.433
 autoplay = true
 bus = &"Music"
@@ -267,10 +297,17 @@ pitch_scale = 0.69
 max_polyphony = 3
 bus = &"SFX"
 
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = -7.495
+bus = &"SFX"
+
 [node name="Bound" type="Node2D" parent="."]
 
 [node name="Win Area" type="Area2D" parent="."]
 position = Vector2(-1264, 1080)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="SkeletonCount" type="Label" parent="Win Area"]
 unique_name_in_owner = true
@@ -285,3 +322,6 @@ horizontal_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Win Area"]
 shape = SubResource("RectangleShape2D_g41ls")
 debug_color = Color(0.708139, 0.583043, 0.211328, 0.42)
+
+[node name="ClericGroup" parent="." instance=ExtResource("16_y2s4l")]
+position = Vector2(61, 213)

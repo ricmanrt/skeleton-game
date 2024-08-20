@@ -1,4 +1,4 @@
-# Basic AI
+# Cleric AI
 extends Node
 
 @onready var group: MinionGroup = $".."

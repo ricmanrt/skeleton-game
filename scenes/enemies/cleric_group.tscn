@@ -12,7 +12,7 @@ radius = 163.371
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AveragePosition/Area2D" index="0"]
 shape = SubResource("CircleShape2D_x724p")
 
-[node name="Node" type="Node" parent="." index="4"]
+[node name="ClericAI" type="Node" parent="." index="4"]
 script = ExtResource("2_w0tjs")
 
 [node name="SpellCooldown" type="Timer" parent="." index="5"]
