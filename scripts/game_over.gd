@@ -13,6 +13,9 @@ func _ready() -> void:
 	restart_btn.pressed.connect(_on_restart)
 	exit_btn.pressed.connect(_on_exit)
 	Globals.score_changed.connect(func(i: int): score_label.text = "score: %06d" % i)
+	
+	if OS.get_name() == "Web":
+		exit_btn.hide()
 
 func _on_exit()->void:
 	get_tree().quit()

@@ -10,6 +10,9 @@ your destruction is worth, hmm... %d points. Great job.
 func _ready() -> void:
 	visibility_changed.connect(_on_visibility_changed)
 	%ExitButton.pressed.connect(_on_exit_btn)
+	
+	if OS.get_name() == "Web":
+		%ExitButton.hide()
 
 func _on_visibility_changed() -> void:
 	if (visible):
