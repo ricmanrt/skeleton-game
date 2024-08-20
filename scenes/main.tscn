@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=25 format=3 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://ie0ohgrveno8" path="res://scenes/win_screen.tscn" id="13_00dhm"]
 [ext_resource type="PackedScene" uid="uid://e6clsaeoxwhu" path="res://scenes/pause_screen.tscn" id="14_u162m"]
 [ext_resource type="AudioStream" uid="uid://chmbsq83n50u3" path="res://music/Cheerful Annoyance.ogg" id="15_htawd"]
-[ext_resource type="PackedScene" uid="uid://dcxusjjjaoirk" path="res://scenes/enemies/cleric_group.tscn" id="16_y2s4l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydft4"]
 size = Vector2(14, 14)
@@ -322,6 +321,3 @@ horizontal_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Win Area"]
 shape = SubResource("RectangleShape2D_g41ls")
 debug_color = Color(0.708139, 0.583043, 0.211328, 0.42)
-
-[node name="ClericGroup" parent="." instance=ExtResource("16_y2s4l")]
-position = Vector2(61, 213)
