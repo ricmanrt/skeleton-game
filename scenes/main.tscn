@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d1afdrjetra4g"]
+[gd_scene load_steps=22 format=3 uid="uid://d1afdrjetra4g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_i4sl8"]
 [ext_resource type="PackedScene" uid="uid://c3057xsnq11lq" path="res://scenes/player.tscn" id="1_tfnp7"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bcuiuonby0src" path="res://music/Retro Beat.ogg" id="10_lvsas"]
 [ext_resource type="FontFile" uid="uid://ckswc4iseblhr" path="res://fonts/Kenney Mini Square Mono.ttf" id="10_tjokw"]
 [ext_resource type="PackedScene" uid="uid://dlgp0cbxlsigq" path="res://scenes/enemies/villager_group.tscn" id="11_3dowd"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="11_4ax83"]
 [ext_resource type="PackedScene" uid="uid://cmbm0hfqk6scp" path="res://scenes/game_over.tscn" id="12_5pi4c"]
 [ext_resource type="AudioStream" uid="uid://c0wxc6agi5dv6" path="res://sounds/skeleton_rise.ogg" id="12_eetql"]
 
@@ -217,10 +218,19 @@ offset_bottom = 40.0
 
 [node name="SkeletonCount" type="Label" parent="UILayer/Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 17.0
+offset_right = 192.0
+offset_bottom = 40.0
 theme_override_fonts/font = ExtResource("10_tjokw")
 text = "Skeleton Count: "
+
+[node name="ScoreLabel" type="Label" parent="UILayer/Control"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("10_tjokw")
+text = "Score: "
+script = ExtResource("11_4ax83")
 
 [node name="Label" type="Label" parent="UILayer/Control"]
 layout_mode = 1

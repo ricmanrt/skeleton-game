@@ -15,3 +15,6 @@ damage_group = 4
 [node name="DamageDealer" parent="." index="3"]
 impact = 30.0
 damage_groups = 8
+
+[node name="AddScore" parent="." index="8"]
+score = 0
