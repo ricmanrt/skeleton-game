@@ -18,6 +18,8 @@ const PICKUP = preload("res://scenes/pickup.tscn")
 const GAME_OVER_SONG = preload("res://music/Game Over.ogg")
 const GAME_OVER_SFX = preload("res://sounds/game_over.ogg")
 const PAUSED_SFX = preload("res://sounds/paused.ogg")
+const WIN_MUSIC = preload("res://music/Sad Town.ogg")
+const VICTORY_SFX = preload("res://sounds/victory.ogg")
 
 @onready var player: Player = %Player
 @onready var cursor: Sprite2D = $Cursor
@@ -75,6 +77,12 @@ func _on_victory():
 	%WinScreen.show()
 	game_over = true
 	pause()
+	
+	music_stream_player.stream = WIN_MUSIC
+	music_stream_player.play()
+	
+	sfx.stream = VICTORY_SFX
+	sfx.play()
 
 func pause_toggle() -> void:
 	if game_over: return
