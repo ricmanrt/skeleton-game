@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3057xsnq11lq"]
+[gd_scene load_steps=16 format=3 uid="uid://c3057xsnq11lq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_07jwv"]
 [ext_resource type="Texture2D" uid="uid://dnisut2j0lohn" path="res://sprites/dungeon tilemap.png" id="2_gr3lw"]
+[ext_resource type="AudioStream" uid="uid://dvlislj8iw8yj" path="res://sounds/creature1.ogg" id="3_7we37"]
 [ext_resource type="PackedScene" uid="uid://bffj27bdkwpnw" path="res://scenes/damage_taker.tscn" id="3_63fsy"]
 [ext_resource type="PackedScene" uid="uid://c2amf5pks6fkh" path="res://scenes/health_bar.tscn" id="4_li2g4"]
 [ext_resource type="Theme" uid="uid://c7pmv0x8csomh" path="res://resources/ui_theme.tres" id="5_rk6pc"]
@@ -20,9 +21,49 @@ radius = 7.07107
 
 [sub_resource type="Animation" id="Animation_pydda"]
 resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.12407]
+}
 
 [sub_resource type="Animation" id="Animation_d2ows"]
 resource_name = "hit"
+length = 0.205
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_7we37")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_p4062"]
 resource_name = "idle"
@@ -53,6 +94,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_33105"]
@@ -138,6 +203,8 @@ visible_characters = 101
 visible_ratio = 0.83
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 4
+bus = &"SFX"
 
 [connection signal="timeout" from="SpellCooldown" to="." method="_on_spell_cooldown_timeout"]
 [connection signal="damage_taken" from="DamageTaker" to="." method="_on__damage_taken"]

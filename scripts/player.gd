@@ -69,6 +69,7 @@ func die() -> void:
 	if dead:
 		return
 	dead = true
+	animation_player.play("death")
 	self.set_process(false)
 	self.set_physics_process(false)
 	died.emit()

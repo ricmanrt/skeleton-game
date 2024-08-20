@@ -1,13 +1,8 @@
 To do:
 
 - general to_do: 
-	* win screen
-	* win condition
-	* show objective
-	* clean UI
 	* damage numbers
 	* general juice
-	* menu 
 	* maybe make a damage flash script instead of animation, probably nah
 - more assets needed: 
 	* music
@@ -20,9 +15,10 @@ To do:
 
 
 Done: 
-	* game over 
-	* fix explosion damage
-	* make explosion push more consistent 
+* win screen
+* game over 
+* fix explosion damage
+* make explosion push more consistent 
 * fix damage dealers so they keep hurting if they are still in the area
 * health_bar
 - item drops
@@ -42,3 +38,7 @@ Done:
 	* all go to a common target, 
 	* big area2D in average center can be a group proximity detector
 	* turn skeleton into generic unit minion that can be either skele or enemy
+* win condition
+* show objective
+* clean UI
+* menu 
